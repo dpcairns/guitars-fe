@@ -16,8 +16,13 @@ export default class App extends Component {
             <div className="App">
             <header className="App-header">    
                 <Router>
+                    <main>
+
+                    <div className="sidebar">
                     <Link to='/create'>Create</Link>
                     <Link to='/'>List</Link>
+                    </div>
+                    <div className="content">
                     <Switch>
                         <Route 
                             path="/" 
@@ -35,7 +40,10 @@ export default class App extends Component {
                             render={(routerProps) => <DetailPage {...routerProps} />} 
                         />
                     </Switch>
-                </Router>
+                    </div>
+                    
+                    </main>
+                    </Router>
             </header>
             </div>
         )

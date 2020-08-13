@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,6 +45,29 @@ label {
   display: block
 }
 
-.guitar-box {
-  margin: 10px;
+.guitars {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.guitar {
+  border: solid 1px white;
+  margin: 5px
+}
+
+.content {
+  height: 100%
+}
+
+main {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background-color: crimson;
+  display: flex;
+  flex-direction: column;
 }

@@ -18,12 +18,12 @@ class ListPage extends React.Component {
 
   render() {
     return (
-      <div>
-      <h2>Guitars:</h2>
+      <div className="guitars">
           {
             this.state.guitars.map((guitar) => {
-              return <Link className="guitar-box" to={`/detail/${guitar.id}`} key={`${guitar.id}-${guitar.color}`} style={{ margin: 5, padding: 5, border: 'solid 3px white'}}>
-                {guitar.color} : {guitar.strings}
+              return <Link className="guitar" to={`/detail/${guitar.id}`} key={`${guitar.id}-${guitar.color}`}>
+                <p>Color: {guitar.color}</p>
+                <p>Strings: {guitar.strings}</p>
               </Link>
             })
           }

@@ -32,7 +32,7 @@ export default class CreatePage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="content">
                 <h2>CREATE!</h2>
                 <form onSubmit={this.handleSubmit}>
                     <label>
