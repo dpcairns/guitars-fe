@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+a {
+  color: pink
+}
+
+label {
+  display: block
+}
+
+.guitar-box {
+  margin: 10px;
+}
