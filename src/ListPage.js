@@ -14,6 +14,10 @@ class ListPage extends React.Component {
     this.setState({
       guitars: data.body
     })
+
+    console.log('=============================\n')
+    console.log('|| data.body', data.body)
+    console.log('\n=============================')
   }
 
   render() {
@@ -24,6 +28,7 @@ class ListPage extends React.Component {
               return <Link className="guitar" to={`/detail/${guitar.id}`} key={`${guitar.id}-${guitar.color}`}>
                 <p>Color: {guitar.color}</p>
                 <p>Strings: {guitar.strings}</p>
+                <p>Brand: {guitar.brand_name}</p>
               </Link>
             })
           }
