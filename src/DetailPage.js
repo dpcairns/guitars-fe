@@ -15,7 +15,7 @@ export default class DetailPage extends Component {
         const data = await fetchGuitar(this.props.match.params.id)
         const brandsData = await fetchBrands();
 
-        const matchingBrand = brandsData.body.find(brand => brand.name = data.body.brand_name);
+        const matchingBrand = brandsData.body.find(brand => brand.name === data.body.brand_name);
 
         this.setState({
             brands: brandsData.body,
