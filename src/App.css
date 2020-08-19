@@ -71,3 +71,14 @@ main {
   display: flex;
   flex-direction: column;
 }
+
+@media (max-width: 600px) {
+  .sidebar {
+    background: orange;
+  }
+
+  main {
+    grid-template-columns: 100%;
+    grid-template-rows: 150px 1fr;
+  }
+}

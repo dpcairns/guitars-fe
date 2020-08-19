@@ -9,15 +9,16 @@ class ListPage extends React.Component {
   }
 
   componentDidMount = async () => {
-    const data = await fetchGuitars()
+    if (!this.props.token) {
+      this.props.history.push('/login');
+    } else {
+      const data = await fetchGuitars(this.props.token)
+  
+      this.setState({
+        guitars: data.body
+      })
+    }
 
-    this.setState({
-      guitars: data.body
-    })
-
-    console.log('=============================\n')
-    console.log('|| data.body', data.body)
-    console.log('\n=============================')
   }
 
   render() {

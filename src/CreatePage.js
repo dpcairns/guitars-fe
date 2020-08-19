@@ -11,11 +11,16 @@ export default class CreatePage extends Component {
     }
 
     componentDidMount = async () => {
-        const brandsData = await fetchBrands();
+        if (!this.props.token) {
+            this.props.history.push('/login');
+        } else {
+            const brandsData = await fetchBrands();
 
-        this.setState({
-            brands: brandsData.body
-        })
+            this.setState({
+                brands: brandsData.body
+            })
+        }
+
     }
 
     handleSubmit = async (e) => {

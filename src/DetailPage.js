@@ -12,18 +12,22 @@ export default class DetailPage extends Component {
     }
 
     componentDidMount = async () => {
-        const data = await fetchGuitar(this.props.match.params.id)
-        const brandsData = await fetchBrands();
-
-        const matchingBrand = brandsData.body.find(brand => brand.name === data.body.brand_name);
-
-        this.setState({
-            brands: brandsData.body,
-            guitar: data.body,
-            color: data.body.color,
-            strings: data.body.strings,
-            brand: matchingBrand.id
-        })
+        if (!this.props.token) {
+            this.props.history.push('/login');
+          } else {  
+            const data = await fetchGuitar(this.props.match.params.id)
+            const brandsData = await fetchBrands();
+    
+            const matchingBrand = brandsData.body.find(brand => brand.name === data.body.brand_name);
+    
+            this.setState({
+                brands: brandsData.body,
+                guitar: data.body,
+                color: data.body.color,
+                strings: data.body.strings,
+                brand: matchingBrand.id
+            })
+          }
     }
 
     handleSubmit = async (e) => {
