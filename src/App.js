@@ -35,53 +35,53 @@ export default class App extends Component {
     render() {
         return (
             <div className="App">
-            <header className="App-header">    
-                <Router>
-                    <main>
+                <header className="App-header">    
+                    <Router>
+                        <main>
+                        <div className="sidebar">
+                            {
+                                this.state.token && 
+                                <>
+                                <Link to='/create'>Create</Link>
+                                <Link to='/'>List</Link>
+                                <Link to='/login'>
+                                    <button onClick={this.clearToken}>Log out</button>
+                                </Link>
+                                </>
+                            }
+                        </div>
+                        <div className="content">
 
-                    <div className="sidebar">
-                        {
-                            this.state.token && 
-                            <>
-                            <Link to='/create'>Create</Link>
-                            <Link to='/'>List</Link>
-                            <Link to='/login'>
-                                <button onClick={this.clearToken}>Log out</button>
-                            </Link>
-                            </>
-                        }
-                    </div>
-                    <div className="content">
-                    <Switch>
-                        <Route 
-                            path="/" 
-                            exact
-                            render={(routerProps) => <ListPage token={this.state.token} {...routerProps} />} 
-                        />
-                        <Route 
-                            path="/login" 
-                            exact
-                            render={(routerProps) => <AuthPage 
-                                handleToken={this.handleToken}
-                                token={this.state.token} 
-                                {...routerProps} />} 
-                        />
-                        <Route 
-                            path="/create" 
-                            exact
-                            render={(routerProps) => <CreatePage token={this.state.token} {...routerProps} />} 
-                        />
-                        <Route 
-                            path="/detail/:id" 
-                            exact
-                            render={(routerProps) => <DetailPage token={this.state.token} {...routerProps} />} 
-                        />
-                    </Switch>
+                        <Switch>
+                            <Route 
+                                path="/" 
+                                exact
+                                render={(routerProps) => <ListPage token={this.state.token} {...routerProps} />} 
+                            />
+                            <Route 
+                                path="/login" 
+                                exact
+                                render={(routerProps) => <AuthPage 
+                                    handleToken={this.handleToken}
+                                    token={this.state.token} 
+                                    {...routerProps} />} 
+                            />
+                            <Route 
+                                path="/create" 
+                                exact
+                                render={(routerProps) => <CreatePage token={this.state.token} {...routerProps} />} 
+                            />
+                            <Route 
+                                path="/detail/:id" 
+                                exact
+                                render={(routerProps) => <DetailPage token={this.state.token} {...routerProps} />} 
+                            />
+                        </Switch>
                     </div>
                     
                     </main>
                     </Router>
-            </header>
+                </header>                
             </div>
         )
     }

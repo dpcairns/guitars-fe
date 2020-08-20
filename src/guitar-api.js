@@ -7,7 +7,7 @@ export function signUp(userData) {
     try {
         return request.post(`${URL}/auth/signup`, userData);
     } catch(e) {
-        throw { error: e.message }
+        return e;
     }
 }
 
@@ -15,31 +15,23 @@ export function signIn(userData) {
     try {
         return request.post(`${URL}/auth/signin`, userData);
     } catch(e) {
-        throw { error: e.message }
+        return e;
     }
 }
 
 export function fetchGuitars() {
     const token = localStorage.getItem('token');
 
-    try{
-        return request
-            .get(`${URL}/api/guitars`)
-            .set('Authorization', token);
-    } catch(e) {
-        return { error: e.message }
-    }
+    return request
+        .get(`${URL}/api/guitars`)
+        .set('Authorization', token);
 }
 
 export function fetchBrands() {
     const token = localStorage.getItem('token');
 
-    try{
-        return request.get(`${URL}/api/brands`)
-            .set('Authorization', token);
-    } catch(e) {
-        return { error: e.message }
-    }
+    return request.get(`${URL}/api/brands`)
+        .set('Authorization', token);
 }
 
 export function fetchGuitar(id) {

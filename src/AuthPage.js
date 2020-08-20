@@ -6,7 +6,8 @@ export default class AuthPage extends Component {
         signInEmail: '',
         signInPassword: '',
         signupEmail: '',
-        signupPassword: ''
+        signupPassword: '',
+        error: null,
     }
 
     handleSignUp = async (e) => {
@@ -24,29 +25,28 @@ export default class AuthPage extends Component {
 
     handleSignIn = async (e) => {
         e.preventDefault();
+        
+        try {
+            const user = await signIn({
+                email: this.state.signInEmail,
+                password: this.state.signInPassword
+            });
+    
+            this.props.handleToken(user.body.token);
+            this.props.history.push('/');
+        } catch(e) {
+            console.log('=============================\n')
+            console.log('|| e', e)
+            console.log('\n=============================')
 
-        const user = await signIn({
-            email: this.state.signInEmail,
-            password: this.state.signInPassword
-        });
-
-        console.log('=============================\n')
-        console.log('|| user.body', user.body)
-        console.log('\n=============================')
-
-        this.props.handleToken(user.body.token);
-        this.props.history.push('/');
-    }
-
-    componentDidCatch(err, errinfo) {
-        console.log('=============================\n')
-        console.log('|| ', err, errinfo)
-        console.log('\n=============================')
+            this.setState({ error: e.message})
+        }
     }
 
     render() {
         return (
             <div>
+                {!!this.state.error && <h2>{this.state.error}</h2>}
                 <form onSubmit={this.handleSignIn}>
                     Sign In?
                     <label>
