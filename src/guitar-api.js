@@ -15,6 +15,10 @@ export function signIn(userData) {
     try {
         return request.post(`${URL}/auth/signin`, userData);
     } catch(e) {
+        console.log('=============================\n')
+        console.log('|| eee', e.body)
+        console.log('\n=============================')
+
         return e;
     }
 }

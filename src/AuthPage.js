@@ -35,11 +35,8 @@ export default class AuthPage extends Component {
             this.props.handleToken(user.body.token);
             this.props.history.push('/');
         } catch(e) {
-            console.log('=============================\n')
-            console.log('|| e', e)
-            console.log('\n=============================')
 
-            this.setState({ error: e.message})
+            this.setState({ error: e.response.body.error})
         }
     }
 
